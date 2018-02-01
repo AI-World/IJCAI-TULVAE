@@ -1,6 +1,6 @@
 # IJCAI-TULVAE
 ## Desccription of TULVAE
-source_code for TULVAE that we used the Semi-VAE strcture to improve original VAE model
+source_code for TULVAE
 ## Environment
 Tensorflow <br> 
 python 2.7
