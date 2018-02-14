@@ -99,10 +99,10 @@ def getXs():  # =
         lineArr = line.split()
         if (len(lineArr) < 250): #delete fist row
             continue
-        item += 1  # 统计条目数
+        item += 1  #
         X = list()
         for i in lineArr[1:]:
-            X.append(float(i))  # 读取向量数据
+            X.append(float(i))  #
         if lineArr[0] == '</s>':
             table_X['<PAD>']=X  #dictionary is a string  it is not a int type
         else:
@@ -130,7 +130,7 @@ def readtraindata():
         pointT.append(X[1:])
         seqlens.append(len(X) - 1)
         item += 1
-    Train_Size =10000
+    Train_Size =10000 #small data size for gowalla 112 user
     pointT = pointT[:Train_Size]  # all tra
     userT = userT[:Train_Size]  # all user
     seqlens = seqlens[:Train_Size]  # all length
@@ -221,10 +221,10 @@ def classifer(encoder_embed_input,keep_prob=0.5,reuse=False):
         input_=tf.transpose(encoder_input,[1,0,2])
         fw_lstm_cell = tf.contrib.rnn.BasicLSTMCell(c_hidden, forget_bias=1.0,
                                                     state_is_tuple=True)  # , state_is_tuple=True
-        fw_lstm_cell = tf.contrib.rnn.DropoutWrapper(fw_lstm_cell, output_keep_prob=keep_prob)  # 加入dropout
+        fw_lstm_cell = tf.contrib.rnn.DropoutWrapper(fw_lstm_cell, output_keep_prob=keep_prob)  # add dropout
         bw_lstm_cell = tf.contrib.rnn.BasicLSTMCell(c_hidden, forget_bias=1.0,
                                                     state_is_tuple=True)  # , state_is_tuple=True
-        bw_lstm_cell = tf.contrib.rnn.DropoutWrapper(bw_lstm_cell, output_keep_prob=keep_prob)  # 加入dropout
+        bw_lstm_cell = tf.contrib.rnn.DropoutWrapper(bw_lstm_cell, output_keep_prob=keep_prob)  # add dropout
         #
         cell_fw = tf.nn.rnn_cell.MultiRNNCell([fw_lstm_cell], state_is_tuple=True)
         cell_bw = tf.nn.rnn_cell.MultiRNNCell([bw_lstm_cell], state_is_tuple=True)
@@ -416,21 +416,21 @@ def   train_model():
                 start_i = step * batch_size
                 input_x = new_trainT[start_i:start_i + batch_size]
                 input_ux=testT[start_i:start_i + batch_size]
-                # 补全序列
+                #
                 sources_batch = pad_sentence_batch(input_x, vocab_to_int['<PAD>'])
                 encode_batch=eos_sentence_batch(input_x,vocab_to_int['<EOS>'])
                 input_batch=pad_sentence_batch(encode_batch,vocab_to_int['<PAD>'])
 
-                # 无标签补全序列
+                #
                 un_sources_batch = pad_sentence_batch(input_ux, vocab_to_int['<PAD>'])
                 un_encode_batch=eos_sentence_batch(input_ux,vocab_to_int['<EOS>'])
                 un_input_batch=pad_sentence_batch(un_encode_batch,vocab_to_int['<PAD>'])
 
-                # 记录长度 unlabel
+                #unlabel
                 un_pad_source_lengths = []
                 for source in input_ux:
                     un_pad_source_lengths.append(len(source)+1)
-                # 记录长度
+                # record length
                 pad_source_lengths = []
                 for source in input_x:
                     pad_source_lengths.append(len(source)+1)
@@ -545,11 +545,11 @@ def test_model(sess,testT,testU,epoch):
     while step < len(testT) // batch_size:  #
         start_i = step * batch_size
         input_x = testT[start_i:start_i + batch_size]
-        # 补全序列
+        # 
         sources_batch = pad_sentence_batch(input_x, vocab_to_int['<PAD>'])
         encode_batch = eos_sentence_batch(input_x, vocab_to_int['<EOS>'])
         input_batch = pad_sentence_batch(encode_batch, vocab_to_int['<PAD>'])
-        # 记录长度
+        # 
         pad_source_lengths = []
         user_mask_id = []
         for source in input_x:
