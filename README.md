@@ -29,7 +29,7 @@ numpy
     </table>
 </div>
 <br>
-##Usage
+## Usage
 We use four different Location-based Social Network data as follows. 
 * Gowalla: <http://snap.stanford.edu/data/loc-gowalla.html>
 * Brightkite: <http://snap.stanford.edu/data/loc-brightkite.html>
