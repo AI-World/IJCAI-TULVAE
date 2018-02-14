@@ -31,9 +31,9 @@ numpy
 <br>
 ## Usage
 We use four different Location-based Social Network data as follows. 
-* Gowalla: <http://snap.stanford.edu/data/loc-gowalla.html>
-* Brightkite: <http://snap.stanford.edu/data/loc-brightkite.html>
-* Foursquare(New York,Tokyo): <https://sites.google.com/site/yangdingqi/home/foursquare-dataset>
+* Gowalla: http://snap.stanford.edu/data/loc-gowalla.html
+* Brightkite: http://snap.stanford.edu/data/loc-brightkite.html
+* Foursquare(New York,Tokyo): https://sites.google.com/site/yangdingqi/home/foursquare-dataset
 * (remark) Please do not use these datasets for commercial purpose. For academic uses, please cite the paper.
 
 ## Reference
