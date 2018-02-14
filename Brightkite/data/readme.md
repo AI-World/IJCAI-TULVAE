@@ -1,2 +1,2 @@
 ## The data of Brightkite with preprocessing
-* We have preprocessed the orginal data, the details have explained in our paper.
+* We have preprocessed the raw data. Details have been explained in the paper.
